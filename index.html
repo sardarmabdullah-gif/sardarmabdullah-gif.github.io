@@ -729,14 +729,115 @@
 
         .project-visual {
             height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
             position: relative;
             background: var(--bg-base);
             overflow: hidden;
             border-bottom: 1px solid var(--border-light);
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Image Gallery Styles */
+        .project-gallery {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .project-slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .project-slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .project-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .project-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Gallery Navigation */
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .project-card:hover .gallery-nav {
+            opacity: 1;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(0, 229, 255, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-prev {
+            left: 10px;
+        }
+
+        .gallery-next {
+            right: 10px;
+        }
+
+        /* Gallery Dots */
+        .gallery-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: var(--accent-cyan);
+            width: 24px;
+            border-radius: 4px;
         }
 
         .project-visual-bg {
@@ -1473,8 +1574,53 @@
                     <!-- Featured Project 1 -->
                     <a href="#" class="project-card featured reveal" data-category="ai app">
                         <div class="project-visual">
-                            <div class="project-visual-bg" style="background: var(--grad-primary);"></div>
-                            <span style="z-index: 1;">🍎</span>
+                            <div class="project-gallery">
+                                <div class="project-slides">
+                                    <div class="project-slide active"><img src="flutter images/foodsc/splash.jpeg"
+                                            alt="FoodScan Splash"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/sign in.jpeg"
+                                            alt="FoodScan Sign In"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/create acc.jpeg"
+                                            alt="FoodScan Create Account"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/home.jpeg"
+                                            alt="FoodScan Home"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/food search.jpeg"
+                                            alt="FoodScan Search"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/scanner.jpeg"
+                                            alt="FoodScan Scanner"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/scan result.jpeg"
+                                            alt="FoodScan Scan Result"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/ingredients.jpeg"
+                                            alt="FoodScan Ingredients"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/recipe suggestion.jpeg"
+                                            alt="FoodScan Recipe Suggestion"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/insights.jpeg"
+                                            alt="FoodScan Insights"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/scan history.jpeg"
+                                            alt="FoodScan History"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/notification.jpeg"
+                                            alt="FoodScan Notifications"></div>
+                                    <div class="project-slide"><img src="flutter images/foodsc/profile.jpeg"
+                                            alt="FoodScan Profile"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="changeSlide(event, -1)">‹</button>
+                                <button class="gallery-nav gallery-next" onclick="changeSlide(event, 1)">›</button>
+                                <div class="gallery-dots">
+                                    <span class="gallery-dot active" onclick="goToSlide(event, 0)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 1)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 2)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 3)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 4)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 5)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 6)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 7)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 8)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 9)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 10)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 11)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 12)"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-content">
                             <div class="project-header">
@@ -1496,8 +1642,65 @@
                     <!-- Featured Project 2 -->
                     <a href="#" class="project-card featured reveal" data-category="app">
                         <div class="project-visual">
-                            <div class="project-visual-bg" style="background: var(--grad-secondary);"></div>
-                            <span style="z-index: 1;">🚨</span>
+                            <div class="project-gallery">
+                                <div class="project-slides">
+                                    <div class="project-slide active"><img
+                                            src="flutter images/smartrescue/smrt splash.jpeg" alt="Smart Rescue Splash">
+                                    </div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/role selection.jpeg"
+                                            alt="Smart Rescue Role Selection"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/login.jpeg"
+                                            alt="Smart Rescue Login"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/signup.jpeg"
+                                            alt="Smart Rescue Signup"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/smrt home.jpeg"
+                                            alt="Smart Rescue Home"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/side panel.jpeg"
+                                            alt="Smart Rescue Side Panel"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/user control.jpeg"
+                                            alt="Smart Rescue User Control"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/user live.jpeg"
+                                            alt="Smart Rescue User Live"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/alert timer.jpeg"
+                                            alt="Smart Rescue Alert Timer"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/responder home.jpeg"
+                                            alt="Smart Rescue Responder Home"></div>
+                                    <div class="project-slide"><img
+                                            src="flutter images/smartrescue/navigation to victim.jpeg"
+                                            alt="Smart Rescue Nav to Victim"></div>
+                                    <div class="project-slide"><img
+                                            src="flutter images/smartrescue/responder contro;.jpeg"
+                                            alt="Smart Rescue Responder Control"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/admin login.jpeg"
+                                            alt="Smart Rescue Admin Login"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/admin overview.jpeg"
+                                            alt="Smart Rescue Admin Overview"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/admin alerts.jpeg"
+                                            alt="Smart Rescue Admin Alerts"></div>
+                                    <div class="project-slide"><img src="flutter images/smartrescue/admin map.jpeg"
+                                            alt="Smart Rescue Admin Map"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="changeSlide(event, -1)">‹</button>
+                                <button class="gallery-nav gallery-next" onclick="changeSlide(event, 1)">›</button>
+                                <div class="gallery-dots">
+                                    <span class="gallery-dot active" onclick="goToSlide(event, 0)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 1)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 2)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 3)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 4)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 5)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 6)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 7)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 8)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 9)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 10)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 11)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 12)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 13)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 14)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 15)"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-content">
                             <div class="project-header">
@@ -1519,8 +1722,39 @@
                     <!-- Regular Projects -->
                     <a href="#" class="project-card reveal" data-category="app">
                         <div class="project-visual" style="font-size: 3rem; height: 160px;">
-                            <div class="project-visual-bg" style="background: var(--grad-tertiary);"></div>
-                            <span style="z-index: 1;">🏦</span>
+                            <div class="project-gallery">
+                                <div class="project-slides">
+                                    <div class="project-slide active"><img
+                                            src="flutter images/meezanclone/meezan splash.jpeg" alt="Meezan Splash">
+                                    </div>
+                                    <div class="project-slide"><img src="flutter images/meezanclone/Meezan login.jpeg"
+                                            alt="Meezan Login"></div>
+                                    <div class="project-slide"><img src="flutter images/meezanclone/meezan home.jpeg"
+                                            alt="Meezan Home"></div>
+                                    <div class="project-slide"><img src="flutter images/meezanclone/snd money.jpeg"
+                                            alt="Meezan Send Money"></div>
+                                    <div class="project-slide"><img src="flutter images/meezanclone/bill paymnt.jpeg"
+                                            alt="Meezan Bill Payment"></div>
+                                    <div class="project-slide"><img src="flutter images/meezanclone/mbl payments.jpeg"
+                                            alt="Meezan Mobile Payments"></div>
+                                    <div class="project-slide"><img src="flutter images/meezanclone/card mang.jpeg"
+                                            alt="Meezan Card Management"></div>
+                                    <div class="project-slide"><img src="flutter images/meezanclone/zakaat.jpeg"
+                                            alt="Meezan Zakaat"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="changeSlide(event, -1)">‹</button>
+                                <button class="gallery-nav gallery-next" onclick="changeSlide(event, 1)">›</button>
+                                <div class="gallery-dots">
+                                    <span class="gallery-dot active" onclick="goToSlide(event, 0)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 1)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 2)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 3)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 4)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 5)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 6)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 7)"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-content">
                             <div class="project-header"><span class="project-year">2026</span></div>
@@ -1534,8 +1768,26 @@
 
                     <a href="#" class="project-card reveal" data-category="ai app">
                         <div class="project-visual" style="font-size: 3rem; height: 160px;">
-                            <div class="project-visual-bg" style="background: var(--grad-primary);"></div>
-                            <span style="z-index: 1;">🧠</span>
+                            <div class="project-gallery">
+                                <div class="project-slides">
+                                    <div class="project-slide active"><img
+                                            src="flutter images/mindmate/mindmate home.jpeg" alt="MindMate Home"></div>
+                                    <div class="project-slide"><img src="flutter images/mindmate/log mood.jpeg"
+                                            alt="MindMate Log Mood"></div>
+                                    <div class="project-slide"><img src="flutter images/mindmate/mood history.jpeg"
+                                            alt="MindMate Mood History"></div>
+                                    <div class="project-slide"><img src="flutter images/mindmate/mindmate chat.jpeg"
+                                            alt="MindMate Chat"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="changeSlide(event, -1)">‹</button>
+                                <button class="gallery-nav gallery-next" onclick="changeSlide(event, 1)">›</button>
+                                <div class="gallery-dots">
+                                    <span class="gallery-dot active" onclick="goToSlide(event, 0)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 1)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 2)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 3)"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-content">
                             <div class="project-header"><span class="project-year">2026</span></div>
@@ -1547,63 +1799,49 @@
                         </div>
                     </a>
 
-                    <a href="#" class="project-card reveal" data-category="ai app">
-                        <div class="project-visual" style="font-size: 3rem; height: 160px;">
-                            <div class="project-visual-bg" style="background: var(--grad-tertiary);"></div>
-                            <span style="z-index: 1;">🌿</span>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header"><span class="project-year">2025</span></div>
-                            <h3 class="project-title">PlantDoc</h3>
-                            <p class="project-desc">Instantly diagnoses plant diseases via camera feed using
-                                custom-trained on-device machine learning models.</p>
-                            <div class="project-tech"><span class="tech-tag">Flutter</span><span class="tech-tag">ML
-                                    Kit</span></div>
-                        </div>
-                    </a>
-
                     <a href="#" class="project-card reveal" data-category="app">
                         <div class="project-visual" style="font-size: 3rem; height: 160px;">
-                            <div class="project-visual-bg" style="background: var(--grad-secondary);"></div>
-                            <span style="z-index: 1;">💬</span>
+                            <div class="project-gallery">
+                                <div class="project-slides">
+                                    <div class="project-slide active"><img
+                                            src="flutter images/urban store/urban splash.jpeg" alt="Urban Store Splash">
+                                    </div>
+                                    <div class="project-slide"><img src="flutter images/urban store/welcome.jpeg"
+                                            alt="Urban Store Welcome"></div>
+                                    <div class="project-slide"><img src="flutter images/urban store/onboarding 1.jpeg"
+                                            alt="Urban Store Onboarding 1"></div>
+                                    <div class="project-slide"><img src="flutter images/urban store/onboarding 2.jpeg"
+                                            alt="Urban Store Onboarding 2"></div>
+                                    <div class="project-slide"><img src="flutter images/urban store/onboarding 3.jpeg"
+                                            alt="Urban Store Onboarding 3"></div>
+                                    <div class="project-slide"><img src="flutter images/urban store/urban sign in.jpeg"
+                                            alt="Urban Store Sign In"></div>
+                                    <div class="project-slide"><img src="flutter images/urban store/urban signup.jpeg"
+                                            alt="Urban Store Sign Up"></div>
+                                    <div class="project-slide"><img src="flutter images/urban store/urban home.jpeg"
+                                            alt="Urban Store Home"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="changeSlide(event, -1)">‹</button>
+                                <button class="gallery-nav gallery-next" onclick="changeSlide(event, 1)">›</button>
+                                <div class="gallery-dots">
+                                    <span class="gallery-dot active" onclick="goToSlide(event, 0)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 1)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 2)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 3)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 4)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 5)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 6)"></span>
+                                    <span class="gallery-dot" onclick="goToSlide(event, 7)"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-content">
-                            <div class="project-header"><span class="project-year">2025</span></div>
-                            <h3 class="project-title">ChatFlow</h3>
-                            <p class="project-desc">Highly scalable real-time messaging app featuring group chats, voice
-                                notes, and media sharing.</p>
+                            <div class="project-header"><span class="project-year">2026</span></div>
+                            <h3 class="project-title">Urban Store</h3>
+                            <p class="project-desc">A premium e-commerce platform offering seamless shopping experiences
+                                with intuitive product discovery and secure checkout.</p>
                             <div class="project-tech"><span class="tech-tag">Flutter</span><span
                                     class="tech-tag">Firebase</span></div>
-                        </div>
-                    </a>
-
-                    <a href="#" class="project-card reveal" data-category="3d">
-                        <div class="project-visual" style="font-size: 3rem; height: 160px;">
-                            <div class="project-visual-bg" style="background: var(--grad-primary);"></div>
-                            <span style="z-index: 1;">🏎️</span>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header"><span class="project-year">2024</span></div>
-                            <h3 class="project-title">Car Viz 3D</h3>
-                            <p class="project-desc">Photorealistic automotive rendering with studio lighting, reflective
-                                materials, and camera fly-through animations.</p>
-                            <div class="project-tech"><span class="tech-tag">Blender</span><span
-                                    class="tech-tag">Cycles</span></div>
-                        </div>
-                    </a>
-
-                    <a href="#" class="project-card reveal" data-category="app">
-                        <div class="project-visual" style="font-size: 3rem; height: 160px;">
-                            <div class="project-visual-bg" style="background: var(--grad-tertiary);"></div>
-                            <span style="z-index: 1;">💰</span>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header"><span class="project-year">2025</span></div>
-                            <h3 class="project-title">WalletWise</h3>
-                            <p class="project-desc">Offline-first personal finance manager with expense categorization,
-                                budgeting, and dynamic charting.</p>
-                            <div class="project-tech"><span class="tech-tag">Flutter</span><span class="tech-tag">Hive
-                                    DB</span><span class="tech-tag">FL Chart</span></div>
                         </div>
                     </a>
 
@@ -1683,8 +1921,8 @@
                     <div class="cert-card">
                         <div class="cert-icon">🎨</div>
                         <div class="cert-info">
-                            <h4>Blender Masterclass</h4>
-                            <p>Udemy · 2025</p>
+                            <h4>Blender </h4>
+                            <p> · 2025</p>
                         </div>
                     </div>
                 </div>
@@ -1710,7 +1948,7 @@
                         <div class="testi-author">
                             <div class="testi-avatar">🧑‍💼</div>
                             <div>
-                                <div class="testi-name">Ahmed Raza</div>
+                                <div class="testi-name">Muneeb Azeem</div>
                                 <div class="testi-role">Client · QuickBite</div>
                             </div>
                         </div>
@@ -1724,7 +1962,7 @@
                         <div class="testi-author">
                             <div class="testi-avatar">👨‍🏫</div>
                             <div>
-                                <div class="testi-name">Prof. Imran Malik</div>
+                                <div class="testi-name">Prof. Touseef Sultan</div>
                                 <div class="testi-role">CS Professor</div>
                             </div>
                         </div>
@@ -1738,7 +1976,7 @@
                         <div class="testi-author">
                             <div class="testi-avatar">👩‍💻</div>
                             <div>
-                                <div class="testi-name">Sara Khalid</div>
+                                <div class="testi-name">Memoona Riaz</div>
                                 <div class="testi-role">Fellow Developer</div>
                             </div>
                         </div>
@@ -1965,6 +2203,48 @@
                 });
             });
         });
+
+        // --- 6. Project Image Gallery ---
+        function changeSlide(event, direction) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const gallery = event.target.closest('.project-gallery');
+            const slides = gallery.querySelectorAll('.project-slide');
+            const dots = gallery.querySelectorAll('.gallery-dot');
+
+            let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+            let newIndex = currentIndex + direction;
+
+            // Loop around
+            if (newIndex >= slides.length) newIndex = 0;
+            if (newIndex < 0) newIndex = slides.length - 1;
+
+            // Update slides
+            slides[currentIndex].classList.remove('active');
+            slides[newIndex].classList.add('active');
+
+            // Update dots
+            dots[currentIndex].classList.remove('active');
+            dots[newIndex].classList.add('active');
+        }
+
+        function goToSlide(event, index) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const gallery = event.target.closest('.project-gallery');
+            const slides = gallery.querySelectorAll('.project-slide');
+            const dots = gallery.querySelectorAll('.gallery-dot');
+
+            // Remove all active classes
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Add active to selected
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
     </script>
 </body>
 
